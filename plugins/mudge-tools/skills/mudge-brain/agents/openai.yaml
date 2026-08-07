@@ -1,0 +1,11 @@
+interface:
+  display_name: "Mudge Brain"
+  short_description: "Search Mudge Brain in read-only mode"
+  default_prompt: "Use $mudge-brain to search prior Mudge knowledge without changing it."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "mudge_tools"
+      description: "Read-only Mudge Brain through the shared MCP"
+      transport: "streamable_http"
+      url: "https://mudge-crm-production.up.railway.app/mcp"

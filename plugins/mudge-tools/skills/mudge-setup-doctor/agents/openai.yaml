@@ -1,0 +1,11 @@
+interface:
+  display_name: "Mudge Setup Doctor"
+  short_description: "Verify Mudge Tools access and permissions"
+  default_prompt: "Use $mudge-setup-doctor to verify this connection and explain any missing capability."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "mudge_tools"
+      description: "Live Mudge Tools setup diagnostics"
+      transport: "streamable_http"
+      url: "https://mudge-crm-production.up.railway.app/mcp"

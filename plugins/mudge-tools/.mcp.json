@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "mudge_tools": {
+      "type": "http",
+      "url": "https://mudge-crm-production.up.railway.app/mcp"
+    }
+  }
+}

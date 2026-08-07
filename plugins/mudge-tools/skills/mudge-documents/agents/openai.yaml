@@ -1,0 +1,11 @@
+interface:
+  display_name: "Mudge Documents"
+  short_description: "Create published Mudge documents safely"
+  default_prompt: "Use $mudge-documents to create this document from the live published registry."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "mudge_tools"
+      description: "Live Mudge document factory through the shared MCP"
+      transport: "streamable_http"
+      url: "https://mudge-crm-production.up.railway.app/mcp"
