@@ -25,3 +25,8 @@ Use the read-only `mudge_setup_doctor` tool from the `mudge_tools` MCP. Do not t
 - Never print, request, reuse, or store access or refresh tokens.
 - Never expand scopes silently; the person must approve them in CRM.
 - Never verify setup with a CRM write, document render, repository request, or filesystem access.
+
+## Missing tools in the client
+
+If a named tool is absent, use `describe_mudge_tools` with `tool_name` for its exact input schema and route, then `call_mudge_read` or `call_mudge_action` with that name and arguments. Paginate discovery until `next_offset` is null. These MCP routes preserve the same account permissions, typed validation, original handlers and confirmation requirements. They do not permit arbitrary SQL, HTTP or filesystem access.
+

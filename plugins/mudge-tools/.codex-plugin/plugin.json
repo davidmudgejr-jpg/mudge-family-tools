@@ -1,6 +1,6 @@
 {
   "name": "mudge-tools",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Safely use the Mudge CRM, read-only Brain, and published document factory from Codex.",
   "author": {
     "name": "Mudge Team"
@@ -8,7 +8,12 @@
   "homepage": "https://ie-crm.vercel.app/#/settings",
   "repository": "https://github.com/davidmudgejr-jpg/mudge-family-tools",
   "license": "Proprietary",
-  "keywords": ["crm", "commercial-real-estate", "documents", "mudge-brain"],
+  "keywords": [
+    "crm",
+    "commercial-real-estate",
+    "documents",
+    "mudge-brain"
+  ],
   "skills": "./skills/",
   "interface": {
     "displayName": "Mudge Tools",
@@ -16,7 +21,11 @@
     "longDescription": "Mudge Tools connects Codex to the live family CRM through per-person OAuth. It supports bounded CRM reads and preview-confirm updates, permanently read-only Mudge Brain search, and private artifacts from the published Mudge document and native-form registry. It does not expose generic database access, repositories, filesystems, imports, deletes, uploads, or raw design source.",
     "developerName": "Mudge Team",
     "category": "Productivity",
-    "capabilities": ["Interactive", "Read", "Write"],
+    "capabilities": [
+      "Interactive",
+      "Read",
+      "Write"
+    ],
     "websiteURL": "https://ie-crm.vercel.app/#/settings",
     "defaultPrompt": [
       "Check my Mudge Tools connection",
