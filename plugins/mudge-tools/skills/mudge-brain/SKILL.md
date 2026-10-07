@@ -30,4 +30,3 @@ Use read_chunk to inspect full cited zoning sections and neighboring text. Prese
 ## Missing tools in the client
 
 If a named tool is absent, use `describe_mudge_tools` with `tool_name` for its exact input schema and route, then `call_mudge_read` or `call_mudge_action` with that name and arguments. Paginate discovery until `next_offset` is null. These MCP routes preserve the same account permissions, typed validation, original handlers and confirmation requirements. They do not permit arbitrary SQL, HTTP or filesystem access.
-
