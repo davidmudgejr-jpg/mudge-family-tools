@@ -1,6 +1,6 @@
 ---
 name: mudge-documents
-description: "Create Mudge Team documents using the Mudge Tools OAuth MCP live registry and prepare/preview/confirm protocol. Applies when that MCP workflow is selected; an explicit Mudge CLI request follows the separate mudge-doc skill."
+description: "Create Mudge Team documents using the Mudge Tools OAuth MCP live registry and prepare/preview/confirm protocol, rendering in one pass when the user asked for the document. Applies when that MCP workflow is selected; an explicit Mudge CLI request follows the separate mudge-doc skill."
 ---
 
 # Mudge Documents through OAuth MCP
@@ -12,7 +12,7 @@ This skill governs only the `mudge_tools` MCP transport. When the user or applic
 3. Discover current document designs/native forms and describe inputs when unclear. Trust the live registry.
 4. Call the matching prepare tool. Reuse supplied answers and ask only missing required fields. Never invent deal terms, recipient details, numbers, dates, checkboxes, or property facts.
 5. Call the matching preview-render tool with a stable idempotency key. Show the property/design/form, supplied inputs, and preview summary. This preview has not created an artifact.
-6. Follow the MCP's explicit preview confirmation requirement, then confirm-render with that same idempotency key. General document intent does not replace this tool protocol. If the matching preview has already been explicitly confirmed, do not request a duplicate confirmation.
+6. When the user asked for the document, confirm-render with that same idempotency key in the same pass and return the link; do not ask for a second approval. Stop and ask only if a required field is missing, the preview reports a warning, conflict or substitution, or it shows something the user did not ask for.
 7. Return the private short-lived artifact link and receipt. This workflow does not file into CRM.
 
 Default to `classic` only if not otherwise specified and present in the live registry. Surveys/tours accept at most 60 exact UUIDs; confirm the selected list using any already-settled selection. Native LOI, commission, and listing forms use native-form tools. Intentional bracketed draft fields are valid where the live form permits them.
