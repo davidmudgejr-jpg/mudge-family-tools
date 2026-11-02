@@ -1,6 +1,6 @@
 ---
 name: mudge-setup-doctor
-description: Diagnose a Mudge Tools OAuth connection without changing data. Use after setup, on a new device, when tools or permissions seem missing, when OAuth expires, or before family onboarding. Verifies service health, authenticated person/device, CRM reads, permanently read-only Brain access, confirmed CRM write capability, published document rendering, and hard security boundaries.
+description: "Connection check for Mudge Tools OAuth, read-only: run when tools are missing, Mudge Tools isn't working or OAuth expired, after setup, on a new device, or before family onboarding. Not for the CLI doctor (mudge-doc), installed skill drift (release-mudge-skills) or a down agent runtime (agent-runtime-recovery)."
 ---
 
 # Mudge Setup Doctor
@@ -9,7 +9,7 @@ Use the read-only `mudge_setup_doctor` tool from the `mudge_tools` MCP. Do not t
 
 ## Workflow
 
-1. Call `mudge_setup_doctor`.
+1. Call `mudge_setup_doctor`. If no Mudge tool is callable in this chat, say so and check the client's MCP list (`/mcp`); a connected CLI does not prove this chat has the tools.
 2. Report the authenticated email, CRM role, device/agent name, and expiry without exposing tokens or secrets.
 3. Summarize every check as pass, warning, or fail.
 4. Confirm explicitly that Mudge Brain is read-only and CRM writes remain preview-confirm only.
@@ -17,7 +17,10 @@ Use the read-only `mudge_setup_doctor` tool from the `mudge_tools` MCP. Do not t
    - authentication failure: reconnect through CRM Settings and OAuth;
    - CRM write warning: use a broker/admin account and approve `crm.write.confirmed`;
    - document warning/failure: approve `crm.documents.render`;
-   - Brain failure: approve `crm.read` or ask an administrator to verify the account.
+   - file/photo filing warning: use a broker/admin account and approve `crm.files.write`;
+   - Brain warning: approve `crm.read` or ask an administrator to verify the account;
+   - the doctor does not test tasks, record creation or conversations, so check `describe_capabilities.publication.callable_tools`: no `preview_create_task` needs `crm.tasks.write`, no `preview_create_deal` needs `crm.records.write`, no `list_conversations` needs `crm.conversations`;
+   - a missing scope needs a full reconnect from the CRM Settings Connect Center; a token refresh cannot add one.
 6. Rerun the doctor after remediation. Do not claim setup is complete while a required check fails.
 
 ## Safety
@@ -26,6 +29,13 @@ Use the read-only `mudge_setup_doctor` tool from the `mudge_tools` MCP. Do not t
 - Never expand scopes silently; the person must approve them in CRM.
 - Never verify setup with a CRM write, document render, repository request, or filesystem access.
 
+## Known failures
+
+- 2026-10-30: the CLI showed Mudge Tools connected while the open chat had none. Check the chat itself, then capture a fresh doctor result.
+- 2026-10-14: Meta Muse failed at automatic app registration. A new hosted client needs its callback allowlisted on the server; a reconnect will not fix it.
+
+When setup fails in a new way, add a dated line here in mudge-family-tools and bump the plugin version.
+
 ## Missing tools in the client
 
-If a named tool is absent, use `describe_mudge_tools` with `tool_name` for its exact input schema and route, then `call_mudge_read` or `call_mudge_action` with that name and arguments. Paginate discovery until `next_offset` is null. These MCP routes preserve the same account permissions, typed validation, original handlers and confirmation requirements. They do not permit arbitrary SQL, HTTP or filesystem access.
+If a named tool is absent, use `describe_mudge_tools` with `tool_name` for its schema and route, then `call_mudge_read` or `call_mudge_action`. Paginate discovery until `next_offset` is null. Permissions and confirmations stay the same; these routes allow no arbitrary SQL, HTTP or filesystem access.
