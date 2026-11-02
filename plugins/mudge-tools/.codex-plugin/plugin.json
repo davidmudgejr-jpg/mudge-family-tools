@@ -1,6 +1,6 @@
 {
   "name": "mudge-tools",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Safely use the Mudge CRM, read-only Brain, and published document factory from Codex.",
   "author": {
     "name": "Mudge Team"
@@ -18,7 +18,7 @@
   "interface": {
     "displayName": "Mudge Tools",
     "shortDescription": "CRM, Brain, and Mudge documents in one connection",
-    "longDescription": "Mudge Tools connects Codex to the live family CRM through per-person OAuth. It supports bounded CRM reads and preview-confirm updates, permanently read-only Mudge Brain search, and private artifacts from the published Mudge document and native-form registry. It does not expose generic database access, repositories, filesystems, imports, deletes, uploads, or raw design source.",
+    "longDescription": "Mudge Tools connects Codex to the live family CRM through per-person OAuth. It supports bounded CRM reads and preview-confirm updates, permanently read-only Mudge Brain search, and private artifacts from the published Mudge document and native-form registry. It does not expose generic database access, repositories, filesystems, imports, physical deletes, or raw design source.",
     "developerName": "Mudge Team",
     "category": "Productivity",
     "capabilities": [
