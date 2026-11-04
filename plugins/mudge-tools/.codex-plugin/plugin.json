@@ -1,6 +1,6 @@
 {
   "name": "mudge-tools",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "description": "Safely use the Mudge CRM, read-only Brain, and published document factory from Codex.",
   "author": {
     "name": "Mudge Team"
