@@ -1,7 +1,7 @@
 interface:
   display_name: "Mudge Documents"
-  short_description: "Create published Mudge documents safely"
-  default_prompt: "Use $mudge-documents to create this document from the live published registry."
+  short_description: "Mudge Tools documents in Mudge Classic"
+  default_prompt: "Use $mudge-documents with the published classic design for this Mudge collateral; preserve native forms and BOV receipt requirements."
 dependencies:
   tools:
     - type: "mcp"
